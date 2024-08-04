@@ -53,6 +53,7 @@ public class UserController {
 	int retryCount=1;
 	public ResponseEntity<User> ratingHotelFallback(String userId,Exception ex){
 		
+		ex.printStackTrace();
 		logger.info("Fall Back is excecuted because service is down :"+ex.getMessage());
 		User user=User.builder().email("dummy@gmail.com").name("Dummy").about("This use is created dummy because some service is down").build();
 		return new ResponseEntity<>(user,HttpStatus.OK);

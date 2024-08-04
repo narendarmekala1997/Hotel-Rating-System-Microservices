@@ -1,4 +1,4 @@
-package com.naren.user.service.config;
+package com.naren.hotel.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,20 +10,20 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig {
+public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity security) throws Exception {
 		
-		security.authorizeHttpRequests()
+		security
+				.authorizeRequests()
 				.anyRequest()
 				.authenticated()
 				.and()
 				.oauth2ResourceServer()
 				.jwt();
-		
-		
 		return security.build();
 		
 	}
+	
 }
